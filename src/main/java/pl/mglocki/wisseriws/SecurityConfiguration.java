@@ -16,19 +16,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	UserDetailsService userDetailsService;
 
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-////		auth.inMemoryAuthentication()
-////			.withUser("michal")
-////			.password("dupa")
-////			.roles("USER");
-//		auth.userDetailsService(userDetailsService);
-//	}
-//	
-//	@Bean
-//	public PasswordEncoder getPasswordEncoder() {
-//		return new BCryptPasswordEncoder(); //new BCryptPasswordEncoder();
-//	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

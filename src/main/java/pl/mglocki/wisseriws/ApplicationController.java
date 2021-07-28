@@ -38,23 +38,6 @@ public class ApplicationController {
 	public List<Details> getWhatDetails() {
 		
 		GetDetailsService details = new GetDetailsService();
-		
-//		Configuration config = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Details.class);
-//		
-//		SessionFactory sf = config.buildSessionFactory();
-////		try {
-////			Class.forName("com.mysql.jdbc.Driver");
-////		} catch (ClassNotFoundException e) {
-////			// TODO Auto-generated catch block
-////			e.printStackTrace();
-////		} 
-//		Session session = sf.openSession();
-//		
-//		Transaction tx = session.beginTransaction();
-//		
-//		List<Details> detailsList = session.createQuery("from Details details where details.menuid < 3").list();
-//		
-//		tx.commit();
 		return details.getDetails(); 
 	}
 	
@@ -113,19 +96,6 @@ public class ApplicationController {
 	@ResponseBody
 	public int getMaxIdValue() {
 		
-//		Configuration config = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Details.class); //ListedPositions.class);
-//		
-//		SessionFactory sf = config.buildSessionFactory();
-//		Session session = sf.openSession();
-//		
-//		Transaction tx = session.beginTransaction();
-//		
-//		Query query = session.createQuery("select max(details.id) from Details details");
-//		Integer maxIdValue = (Integer) query.getSingleResult();
-//		
-//		tx.commit();
-//		return maxIdValue; 
-		
 		GetMaxIdDetailsService id = new GetMaxIdDetailsService();
 		return id.getMaxIdOfDetails();
 	}
@@ -133,19 +103,7 @@ public class ApplicationController {
 	@RequestMapping("pictures_max")
 	@ResponseBody
 	public int getMaxIdValueOfPictures() {
-		
-//		Configuration config = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Pictures.class); //ListedPositions.class);
-//		
-//		SessionFactory sf = config.buildSessionFactory();
-//		Session session = sf.openSession();
-//		
-//		Transaction tx = session.beginTransaction();
-//		
-//		Query query = session.createQuery("select max(pictures.id) from Pictures pictures");
-//		Integer maxIdValue = (Integer) query.getSingleResult();
-//		
-//		tx.commit();
-//		return maxIdValue; 
+	
 		GetMaxIdOfPicturesService id = new GetMaxIdOfPicturesService();
 		return id.getMaxIdValueOfPictures();
 	}
@@ -153,17 +111,6 @@ public class ApplicationController {
 	@RequestMapping(value = "pictures", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Pictures> getListOfPictures(){
-//		Configuration config = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Pictures.class);
-//		
-//		SessionFactory sf = config.buildSessionFactory();
-//		Session session = sf.openSession();
-//		
-//		Transaction tx = session.beginTransaction();
-//		
-//		List<Pictures> listOfPictures = session.createQuery("from Pictures").list();
-//		
-//		tx.commit();
-//		return listOfPictures;
 		
 		GetListOfPictures pictures = new GetListOfPictures();
 		return pictures.getListOfPictures();
@@ -172,9 +119,8 @@ public class ApplicationController {
 	
 	@PostMapping(value = "pictures_file")
 	@ResponseStatus(value = HttpStatus.OK)
-	public void uploadImage(@RequestParam("inpFile") MultipartFile file) { //@RequestBody List<Pictures> picturesList){
+	public void uploadImage(@RequestParam("inpFile") MultipartFile file) {
 		System.out.println(System.getProperty("user.dir"));
-		//String folder = "C:/Users/Guodoo/Documents/workspace-spring-tool-suite-4-4.2.2.RELEASE/wisserwis/src/main/webapp/img/";
 		String folder = "/opt/tomcat/webapps/ROOT/img/";//"/var/lib/tomcat/webapps/ROOT/img/"; //System.getProperty("user.dir") + "/src/main/webapp/img/";
 		byte[] bytes;
 		try {
